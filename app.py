@@ -172,14 +172,14 @@ def get_moneychanger():
     # driver = webdriver.Chrome(r'C:\Users\WNG056\Downloads\chromedriver_win32\chromedriver.exe')
     details = []
 
-    for i in range(1,6):
+    for i in range(1,20):
         driver.get('https://cashchanger.co/singapore/mc/firman-hah-international-exchange/' + str(i))
         mc_detail = driver.find_elements_by_class_name('mc-detail')
         detail = {}
-        # try:
-        #     detail['img'] = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/section[2]/div/div[1]/div/div/div[1]/img').get_attribute('src')  # get the img src
-        # except:
-        #     continue
+        try:
+            detail['img'] = driver.find_element_by_xpath('/html/body/div[1]/div/div[2]/div[1]/section[2]/div/div[1]/div/div/div[1]/img').get_attribute('src')  # get the img src
+        except:
+            continue
         for row in mc_detail:
             currencies = []
             col = row.text.split('\n')
