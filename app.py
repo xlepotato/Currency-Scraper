@@ -210,46 +210,46 @@ def get_moneychanger():
                     detail['tel_No'] = col[1]
                     detail['mrt'] = col[2]
                     detail['address'] = col[3]
-        # try:
-        #     currency_table = driver.find_element_by_class_name('mc-currencyratetable')
-        #     currency_data = currency_table.find_elements_by_class_name(' currencybox-rate')
-        #     for row in currency_data:
-        #         currency = {}
-        #         col = row.text.split('\n')
-        #         if col[0] != '':
-        #             inverse_rate = row.find_elements_by_class_name('inverserate')
-        #             if inverse_rate[0].text != '':  # check if the rate display info for buy is available
-        #                 currency['currency_code'] = col[0]
-        #                 currency['currency_name'] = col[1]
-        #                 currency['exchange_rate_buy'] = col[2]
-        #                 currency['rate_buy'] = col[3]
-        #                 currency['last_update_buy'] = col[4]
-        #                 currency['exchange_rate_sell'] = col[5]
-        #                 if inverse_rate[1].text != '': # check if the rate display info for sell is available
-        #                     currency['rate_sell'] = col[6]
-        #                     currency['last_update_sell'] = col[7]
-        #                 else:  # rate display info for sell is missing
-        #                     currency['rate_sell'] = '-'
-        #                     currency['last_update_sell'] = col[6]
-        #             else:  # rate display info for buy is missing
-        #                 currency['currency_code'] = col[0]
-        #                 currency['currency_name'] = col[1]
-        #                 currency['exchange_rate_buy'] = col[2]
-        #                 currency['rate_buy'] = '-'
-        #                 currency['last_update_buy'] = col[3]
-        #                 currency['exchange_rate_sell'] = col[4]
-        #                 if inverse_rate[1].text != '':   # check if the rate display info for sell is available
-        #                     currency['rate_sell'] = col[5]
-        #                     currency['last_update_sell'] = col[6]
-        #                 else: # rate display info for sell is missing
-        #                     currency['rate_sell'] = '-'
-        #                     currency['last_update_sell'] = col[5]
-        #             currencies.append(currency)  # append all the available currencies offered by a particular money changer to a list
-        #     detail['currency_table'] = currencies
+        try:
+            currency_table = driver.find_element_by_class_name('mc-currencyratetable')
+            currency_data = currency_table.find_elements_by_class_name(' currencybox-rate')
+            for row in currency_data:
+                currency = {}
+                col = row.text.split('\n')
+                if col[0] != '':
+                    # inverse_rate = row.find_elements_by_class_name('inverserate')
+                    # if inverse_rate[0].text != '':  # check if the rate display info for buy is available
+                        currency['currency_code'] = col[0]
+                        # currency['currency_name'] = col[1]
+                        # currency['exchange_rate_buy'] = col[2]
+                        # currency['rate_buy'] = col[3]
+                        # currency['last_update_buy'] = col[4]
+                        # currency['exchange_rate_sell'] = col[5]
+                        # if inverse_rate[1].text != '': # check if the rate display info for sell is available
+                        #     currency['rate_sell'] = col[6]
+                        #     currency['last_update_sell'] = col[7]
+                        # else:  # rate display info for sell is missing
+                        #     currency['rate_sell'] = '-'
+                        #     currency['last_update_sell'] = col[6]
+                    # else:  # rate display info for buy is missing
+                    #     currency['currency_code'] = col[0]
+                    #     currency['currency_name'] = col[1]
+                    #     currency['exchange_rate_buy'] = col[2]
+                    #     currency['rate_buy'] = '-'
+                    #     currency['last_update_buy'] = col[3]
+                    #     currency['exchange_rate_sell'] = col[4]
+                    #     if inverse_rate[1].text != '':   # check if the rate display info for sell is available
+                    #         currency['rate_sell'] = col[5]
+                    #         currency['last_update_sell'] = col[6]
+                    #     else: # rate display info for sell is missing
+                    #         currency['rate_sell'] = '-'
+                    #         currency['last_update_sell'] = col[5]
+                    currencies.append(currency)  # append all the available currencies offered by a particular money changer to a list
+            detail['currency_table'] = currencies
             details.append(detail)
-        # except Exception as e:
-        #     print(e)
-        #     pass  # skip the page if the relevant info of the money changer is not available to scrape
+        except Exception as e:
+            print(e)
+            pass  # skip the page if the relevant info of the money changer is not available to scrape
     # for k in details:
     #     print(k)
     print(len(details)) # print the length of the data scrapped
