@@ -165,6 +165,18 @@ def get_profile():
 
 
 
+@app.route('/test', methods=['GET'])
+def get_p():
+    details = []
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    # driver = webdriver.Chrome(r'C:\Users\WNG056\Downloads\chromedriver_win32\chromedriver.exe')
+    driver.get('https://cashchanger.co/singapore/mc/simlim-exchange-and-trading/189')
+    detail = {}
+    detail['img'] = driver.find_element_by_xpath(
+        '/html/body/div[1]/div/div[2]/div[1]/section[2]/div/div[1]/div/div/div[1]/img').get_attribute('src')
+    details.append(detail)
+    return jsonify(details)
+
 
 @app.route('/api/v1/resources/moneychanger/moneychanger', methods=['GET'])
 def get_moneychanger():
