@@ -183,7 +183,7 @@ def get_moneychanger():
     # driver = webdriver.Chrome(r'C:\Users\WNG056\Downloads\chromedriver_win32\chromedriver.exe')
     details = []
 
-    for i in range(1,20):
+    for i in range(1,3):
         driver.get('https://cashchanger.co/singapore/mc/firman-hah-international-exchange/' + str(i))
         mc_detail = driver.find_elements_by_class_name('mc-detail')
         detail = {}
