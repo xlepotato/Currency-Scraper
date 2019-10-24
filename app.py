@@ -244,7 +244,7 @@ def get_moneychanger():
                     #     else: # rate display info for sell is missing
                     #         currency['rate_sell'] = '-'
                     #         currency['last_update_sell'] = col[5]
-                    currencies.append(currency)  # append all the available currencies offered by a particular money changer to a list
+                        currencies.append(currency)  # append all the available currencies offered by a particular money changer to a list
             detail['currency_table'] = currencies
             details.append(detail)
         except Exception as e:
