@@ -212,7 +212,7 @@ def get_moneychanger():
                     detail['address'] = col[3]
         try:
             currency_table = driver.find_element_by_class_name('mc-currencyratetable')
-            currency_data = currency_table.find_elements_by_class_name(' currencybox-rate')
+            currency_data = currency_table.find_elements_by_class_name('currencybox-rate')
             for row in currency_data:
                 currency = {}
                 col = row.text.split('\n')
