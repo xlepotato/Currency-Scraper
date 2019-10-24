@@ -168,8 +168,8 @@ def get_profile():
 
 @app.route('/api/v1/resources/moneychanger/moneychanger', methods=['GET'])
 def get_moneychanger():
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-    # driver = webdriver.Chrome(r'C:\Users\WNG056\Downloads\chromedriver_win32\chromedriver.exe')
+    # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    driver = webdriver.Chrome(r'C:\Users\WNG056\Downloads\chromedriver_win32\chromedriver.exe')
     details = []
 
     for i in range(1,212):
@@ -247,4 +247,4 @@ def get_moneychanger():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(threaded=True, port= os.env.PORT)
