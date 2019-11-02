@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config["DEBUG"] = True
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.binary_location = "/usr/bin/google-chrome"
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument("--headless")
 
@@ -177,13 +177,13 @@ def get_p():
     return jsonify(details)
 
 
-@app.route('/api/v1/resources/moneychanger/moneychanger', methods=['GET'])
+@app.route('/api/v1/resources/moneychanger/details', methods=['GET'])
 def get_moneychanger():
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", chrome_options=chrome_options)
     # driver = webdriver.Chrome(r'C:\Users\WNG056\Downloads\chromedriver_win32\chromedriver.exe')
     details = []
 
-    for i in range(1,11):
+    for i in range(1,211):
         driver.get('https://cashchanger.co/singapore/mc/firman-hah-international-exchange/' + str(i))
         mc_detail = driver.find_elements_by_class_name('mc-detail')
         detail = {}
@@ -217,33 +217,33 @@ def get_moneychanger():
                 currency = {}
                 col = row.text.split('\n')
                 if col[0] != '':
-                    # inverse_rate = row.find_elements_by_class_name('inverserate')
-                    # if inverse_rate[0].text != '':  # check if the rate display info for buy is available
+                    inverse_rate = row.find_elements_by_class_name('inverserate')
+                    if inverse_rate[0].text != '':  # check if the rate display info for buy is available
                         currency['currency_code'] = col[0]
-                        # currency['currency_name'] = col[1]
-                        # currency['exchange_rate_buy'] = col[2]
-                        # currency['rate_buy'] = col[3]
-                        # currency['last_update_buy'] = col[4]
-                        # currency['exchange_rate_sell'] = col[5]
-                        # if inverse_rate[1].text != '': # check if the rate display info for sell is available
-                        #     currency['rate_sell'] = col[6]
-                        #     currency['last_update_sell'] = col[7]
-                        # else:  # rate display info for sell is missing
-                        #     currency['rate_sell'] = '-'
-                        #     currency['last_update_sell'] = col[6]
-                    # else:  # rate display info for buy is missing
-                    #     currency['currency_code'] = col[0]
-                    #     currency['currency_name'] = col[1]
-                    #     currency['exchange_rate_buy'] = col[2]
-                    #     currency['rate_buy'] = '-'
-                    #     currency['last_update_buy'] = col[3]
-                    #     currency['exchange_rate_sell'] = col[4]
-                    #     if inverse_rate[1].text != '':   # check if the rate display info for sell is available
-                    #         currency['rate_sell'] = col[5]
-                    #         currency['last_update_sell'] = col[6]
-                    #     else: # rate display info for sell is missing
-                    #         currency['rate_sell'] = '-'
-                    #         currency['last_update_sell'] = col[5]
+                        currency['currency_name'] = col[1]
+                        currency['exchange_rate_buy'] = col[2]
+                        currency['rate_buy'] = col[3]
+                        currency['last_update_buy'] = col[4]
+                        currency['exchange_rate_sell'] = col[5]
+                        if inverse_rate[1].text != '': # check if the rate display info for sell is available
+                            currency['rate_sell'] = col[6]
+                            currency['last_update_sell'] = col[7]
+                        else:  # rate display info for sell is missing
+                            currency['rate_sell'] = '-'
+                            currency['last_update_sell'] = col[6]
+                    else:  # rate display info for buy is missing
+                        currency['currency_code'] = col[0]
+                        currency['currency_name'] = col[1]
+                        currency['exchange_rate_buy'] = col[2]
+                        currency['rate_buy'] = '-'
+                        currency['last_update_buy'] = col[3]
+                        currency['exchange_rate_sell'] = col[4]
+                        if inverse_rate[1].text != '':   # check if the rate display info for sell is available
+                            currency['rate_sell'] = col[5]
+                            currency['last_update_sell'] = col[6]
+                        else: # rate display info for sell is missing
+                            currency['rate_sell'] = '-'
+                            currency['last_update_sell'] = col[5]
                         currencies.append(currency)  # append all the available currencies offered by a particular money changer to a list
             detail['currency_table'] = currencies
             details.append(detail)
