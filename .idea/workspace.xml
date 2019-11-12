@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="97b9aeab-2f55-4076-8c9c-a4267a8f7c35" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +71,7 @@
       <workItem from="1572622094875" duration="2109000" />
       <workItem from="1572780135809" duration="3689000" />
       <workItem from="1573473379148" duration="6348000" />
-      <workItem from="1573488439231" duration="5924000" />
+      <workItem from="1573488439231" duration="6547000" />
     </task>
     <task id="LOCAL-00001" summary="Changed codes for aws deployment">
       <created>1572670834776</created>
@@ -95,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573543304972</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="completed web scrape api">
+      <created>1573544503417</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573544503417</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
